@@ -13,24 +13,12 @@ export class App extends Component {
         bad: 0
     }
 
-    heandlerClickGood = () => {
-        this.setState((prevState) => ({
-                good: prevState.good + 1, 
-           })
-        )
-    }
-    
-    heandlerClickNeutral = () => {
-        this.setState((prevState) => ({
-            neutral: prevState.neutral + 1,
-       }))
-    }
-
-    heandlerClickBad = () => {
-        this.setState((prevState) => ({
-            bad: prevState.bad + 1,
+    heandlerClick = (e) => {
+        const buttonName = e.target.name; 
+        this.setState(prev => ({
+            [buttonName]: prev[buttonName] + 1
         }))
-    }
+  }
 
     countTotalFeedback = () => {
         return this.state.good + this.state.neutral + this.state.bad;
@@ -49,7 +37,7 @@ export class App extends Component {
                 <Section title="Please leave feedback">
                     <FeedbackOptions
                         options={['good', 'neutral', 'bad']}
-                        onLeaveFeedback={[this.heandlerClickGood, this.heandlerClickNeutral, this.heandlerClickBad]}
+                        onLeaveFeedback={this.heandlerClick}
                     />
                 </Section>
 

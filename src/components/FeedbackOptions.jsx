@@ -36,7 +36,8 @@ const FeedbackOptions = ({ options, onLeaveFeedback }) => {
                     <li key={ index } >
                     <button
                         type="button"
-                        onClick={onLeaveFeedback[index]}
+                        onClick={onLeaveFeedback}
+                        name={option}
                     >
                         {option}
                     </button>
